@@ -1,3 +1,3 @@
-## test
+## Algorithm-practice
 
-#### It starts after the sleep.
+#### This project is my algorithm practice project.
