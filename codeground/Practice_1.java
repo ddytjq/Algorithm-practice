@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class One {
+public class Practice_1 {
 	public static void main(String[] args) throws Exception{
 		
 		Scanner sc = new Scanner(System.in);
