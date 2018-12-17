@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="python"/>
 	<classpathentry kind="src" path="codeground"/>
-	<classpathentry kind="src" path="Other"/>
+	<classpathentry kind="src" path="other"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
