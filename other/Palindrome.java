@@ -28,7 +28,7 @@ public class Palindrome
                 max_len = temp_len;
             }
         }
-        // 팰린드롬 길이가 홀수일경우
+        
         for(int i=0; i<len-1; i++){
             temp_len = 1;
             for(int j=i-1; j>=0; j--){
