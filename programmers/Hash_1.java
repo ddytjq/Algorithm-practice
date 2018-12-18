@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Hash_1 {
+	
 	public static String solution(String[] participant, String[] completion) {
 		String answer = "";
 		Map<String, Integer> result = new HashMap<>();
@@ -29,6 +30,7 @@ public class Hash_1 {
 	}
 
 	public static void main(String[] args) {
+		
 		String participant[] = { "leo", "kiki", "eden" };
 		String completion[] = { "eden", "kiki" };
 		String participant1[] = { "marina", "josipa", "nikola", "vinko", "filipa" };
