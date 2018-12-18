@@ -1,19 +1,36 @@
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Hash_1 {
 	
+	public static String solution2(String[] participant, String[] completion) {
+		
+		String answer = "";
+		
+		Arrays.sort(participant);
+		Arrays.sort(completion);
+		
+		answer = participant[participant.length-1];
+		
+		for(int i = 0; i < completion.length; i++) {
+			if(participant[i] != completion[i]) 
+				answer = participant[i];
+		}
+		return answer;
+	}
 	public static String solution(String[] participant, String[] completion) {
 		String answer = "";
-		Map<String, Integer> result = new HashMap<>();
 		int val = 1;
-
+		
+		Map<String, Integer> result = new HashMap<>();
+		
 		for (String part : participant) {
-			if(result.containsKey(part)) {
-				result.put(part, val+1);
-				continue;
+			if(result.get(part)==null) {
+				result.put(part, val);
 			}
-			result.put(part, val);
+			else
+				result.put(part, val+1);
 		}
 
 		for (String comp : completion) {
@@ -21,11 +38,10 @@ public class Hash_1 {
 			result.put(comp, val-1); 
 		}
 		
-		for(String a : participant) {
-			if(result.get(a) == 1)
-				answer = a;
+		for(String part : participant) {
+			if(result.get(part) == 1)
+				answer = part;
 		}
-		
 		return answer;
 	}
 
@@ -38,8 +54,8 @@ public class Hash_1 {
 		String participant2[] = { "mislav", "stanko", "mislav", "ana" };
 		String completion2[] = { "stanko", "ana", "mislav" };
 
-		System.out.println(solution(participant, completion));
-		System.out.println(solution(participant1, completion1));
-		System.out.println(solution(participant2, completion2));
+		System.out.println(solution2(participant, completion));
+		System.out.println(solution2(participant1, completion1));
+		System.out.println(solution2(participant2, completion2));
 	}
 }
