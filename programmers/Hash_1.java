@@ -1,26 +1,28 @@
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Hash_1 {
-
 	public static String solution(String[] participant, String[] completion) {
 		String answer = "";
-		int val = 0;
-
 		Map<String, Integer> result = new HashMap<>();
+		int val = 1;
 
 		for (String part : participant) {
+			if(result.containsKey(part)) {
+				result.put(part, val+1);
+				continue;
+			}
 			result.put(part, val);
-
-			System.out.println("1.part : "+result.get(val));
-			val += 1;
 		}
 
 		for (String comp : completion) {
-			val -= 1;
-			result.put(comp, val);
-			System.out.println("2.comp : "+result.get(val));
+			val = result.get(comp);
+			result.put(comp, val-1); 
+		}
+		
+		for(String a : participant) {
+			if(result.get(a) == 1)
+				answer = a;
 		}
 		
 		return answer;
