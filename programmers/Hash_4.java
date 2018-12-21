@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -9,7 +10,7 @@ import java.util.TreeMap;
 public class Hash_4 {
 	public static int[] solution(String[] genres, int[] plays) {
 
-		int[] answer = {};
+		int[] answer = new int[genres.length-1]; ;
 		int var;
 		int i = 0;
 
@@ -17,7 +18,6 @@ public class Hash_4 {
 		Map<Integer, Integer> result = new HashMap<>(); // 번호, 각 시간 values
 		Map<Integer, String> num = new HashMap<>(); // 각 시간, name key
 
-		// 총 플레이 시간
 		for (String gen : genres) {
 			if (map.get(gen) == null) {
 				var = plays[i];
@@ -33,33 +33,37 @@ public class Hash_4 {
 				i++;
 			}
 		}
+
 		Iterator tm = sortByValue(map).iterator();
 		Iterator tm2 = sortByValue(result).iterator();
 		TreeMap<Integer, String> iterator = new TreeMap<Integer, String>(num);
 		Iterator<Integer> tm3 = iterator.descendingKeySet().iterator();
-
-		int[] fin = new int[result.size()];
 		int e = 0;
-
+		int v = map.size();
+		
 		while (tm.hasNext()) {
 			String one = (String) tm.next();// pop, classic
-			System.out.println(one);
 			while (tm3.hasNext()) {
 				Integer two = (Integer) tm3.next(); // 2500, 800, 600, 500
 				String five = (String) num.get(two); // pop, classic, pop classic
 				Integer three = (Integer) tm2.next(); // 4 3 1 0 2 정
 				Integer six = (Integer) result.get(three); // 2500 800 600 500 150
 				if (five.equals(one)) {
-					fin[e] = three;
+					answer[e] = three;
 					e++;
+				}
+				else {
+					if(v >= genres.length-1)
+						break;
+					answer[v] = three;
+					v++;
 				}
 			}
 		}
+		for(int r = 0; r < genres.length-1; r++) {
+		}
 
-		for (int j = 0; j < fin.length; j++)
-			System.out.println(fin[j]);
-
-		return fin;
+		return answer;
 
 	}
 
@@ -85,7 +89,7 @@ public class Hash_4 {
 		String[] genres = { "classic", "pop", "classic", "classic", "pop" };
 		int[] plays = { 500, 600, 150, 800, 2500 };
 
-		System.out.println(solution(genres, plays));
+		System.out.println(Arrays.toString(solution(genres, plays)));
 
 	}
 }
