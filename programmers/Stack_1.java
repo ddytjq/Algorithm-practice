@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.Stack;
 
 public class Stack_1 {
@@ -10,17 +9,22 @@ public class Stack_1 {
 			if (arrangement.charAt(i) == '(') {
 				st.push(1);
 			} else {
-				st.pop();
-				answer += st.size();
+				if (arrangement.charAt(i - 1) == '(') {
+					st.pop();
+					answer += st.size();
+				} else {
+					answer += 1;
+					st.pop();
+				}
 			}
 		}
 		return answer;
 	}
 
 	public static void main(String[] args) {
-		String result = "()(((()())(())()))(())";
+		String result = "(((()(()()))(())()))(()())";
 		System.out.println(solution(result));
 	}
 }
 
-// Test Case 추가 
+// Test Case 추가
