@@ -14,12 +14,11 @@ public class Stack_1 {
 				answer += st.size();
 			}
 		}
-
 		return answer;
 	}
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(solution(sc.nextLine()));
+		String result = "()(((()())(())()))(())";
+		System.out.println(solution(result));
 	}
 }
