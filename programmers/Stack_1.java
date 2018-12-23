@@ -22,3 +22,5 @@ public class Stack_1 {
 		System.out.println(solution(result));
 	}
 }
+
+// Test Case 추가 
