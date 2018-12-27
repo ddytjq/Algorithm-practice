@@ -10,13 +10,14 @@ import java.util.TreeMap;
 public class Hash_4 {
 	public static int[] solution(String[] genres, int[] plays) {
 
-		int[] answer = new int[genres.length-1]; ;
+		int[] answer = new int[genres.length - 1];
+		;
 		int var;
 		int i = 0;
 
-		Map<String, Integer> map = new HashMap<>(); // name, 총시간 values
-		Map<Integer, Integer> result = new HashMap<>(); // 번호, 각 시간 values
-		Map<Integer, String> num = new HashMap<>(); // 각 시간, name key
+		Map<String, Integer> map = new HashMap<>();
+		Map<Integer, Integer> result = new HashMap<>();
+		Map<Integer, String> num = new HashMap<>();
 
 		for (String gen : genres) {
 			if (map.get(gen) == null) {
@@ -40,27 +41,26 @@ public class Hash_4 {
 		Iterator<Integer> tm3 = iterator.descendingKeySet().iterator();
 		int e = 0;
 		int v = map.size();
-		
+
 		while (tm.hasNext()) {
-			String one = (String) tm.next();// pop, classic
+			String one = (String) tm.next();
 			while (tm3.hasNext()) {
-				Integer two = (Integer) tm3.next(); // 2500, 800, 600, 500
-				String five = (String) num.get(two); // pop, classic, pop classic
-				Integer three = (Integer) tm2.next(); // 4 3 1 0 2 정
-				Integer six = (Integer) result.get(three); // 2500 800 600 500 150
+				Integer two = (Integer) tm3.next();
+				String five = (String) num.get(two);
+				Integer three = (Integer) tm2.next();
+				Integer six = (Integer) result.get(three);
 				if (five.equals(one)) {
 					answer[e] = three;
 					e++;
-				}
-				else {
-					if(v >= genres.length-1)
+				} else {
+					if (v >= genres.length - 1)
 						break;
 					answer[v] = three;
 					v++;
 				}
 			}
 		}
-		for(int r = 0; r < genres.length-1; r++) {
+		for (int r = 0; r < genres.length - 1; r++) {
 		}
 
 		return answer;
@@ -73,7 +73,6 @@ public class Hash_4 {
 		list.addAll(map.keySet());
 
 		Collections.sort(list, new Comparator() {
-
 			public int compare(Object o1, Object o2) {
 				Object v1 = map.get(o1);
 				Object v2 = map.get(o2);

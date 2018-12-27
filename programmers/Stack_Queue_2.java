@@ -48,7 +48,7 @@ public class Stack_Queue_2 {
 		}
 
 		int result = 0;
-		
+
 		for (int a = 0; a < priorities.length; a++) {
 			Set<Integer> set = que1.remove().keySet();
 			Iterator<Integer> num1 = set.iterator();
@@ -58,6 +58,7 @@ public class Stack_Queue_2 {
 				break;
 			}
 		}
+
 		return answer;
 	}
 
