@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Stack_1 {
+public class Stack_Queue_1 {
 	public static int solution(String arrangement) {
 		int answer = 0;
 		Stack st = new Stack();
