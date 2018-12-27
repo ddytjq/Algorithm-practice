@@ -48,16 +48,7 @@ public class Stack_Queue_2 {
 		}
 
 		int result = 0;
-		/*
-		 * Set<Integer> set = que1.remove().keySet(); Iterator<Integer> num1 =
-		 * set.iterator();
-		 * 
-		 * while (num1.hasNext()) { result++; if (num1.next() == location + 1) { answer
-		 * = result; break; } }
-		 * 
-		 * return answer; }
-		 */
-
+		
 		for (int a = 0; a < priorities.length; a++) {
 			Set<Integer> set = que1.remove().keySet();
 			Iterator<Integer> num1 = set.iterator();
