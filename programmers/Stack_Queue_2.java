@@ -5,7 +5,7 @@ public class Stack_Queue_2 {
 	public static int solution(int[] priorities, int location) {
 
 		Queue<Integer> queue = new LinkedList<>();
-		int count = 0;
+		int count = location;
 
 		for (int i : priorities)
 			queue.offer(i);
@@ -16,22 +16,16 @@ public class Stack_Queue_2 {
 			for (int i : queue) {
 				if (result < i) {
 					check = true;
-					break;
 				}
 			}
-			if (check)
-				queue.offer(result);
-			else {
-				count++;
-				if(location == 0) return count;
-			}
 			
-			location--;
-			if(location < 0) location += priorities.length;
-
+			if (check) {
+				queue.offer(result);
+				count--;
+				if(count<0) count += priorities.length;
+			}
 		}
-		return count;
-
+		return count+1;
 	}
 
 	public static void main(String[] args) {
