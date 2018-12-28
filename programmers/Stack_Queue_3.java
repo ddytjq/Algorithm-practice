@@ -3,6 +3,8 @@ public class Stack_Queue_3 {
     public static int solution(int bridge_length, int weight, int[] truck_weights) {
         int answer = 0;
 
+        // 할것 
+        
         
         return answer;
     }
