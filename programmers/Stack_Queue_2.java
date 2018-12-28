@@ -1,65 +1,37 @@
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 
 public class Stack_Queue_2 {
 	public static int solution(int[] priorities, int location) {
-		int answer = 0;
+
+		Queue<Integer> queue = new LinkedList<>();
 		int count = 0;
-		int num = 1;
-		Map<Integer, Integer> map;
-		Queue<Map<Integer, Integer>> que1 = new LinkedList();
-		Queue<Integer> que2 = new LinkedList();
 
-		for (int i : priorities) {
-			map = new HashMap<>();
-			map.put(num, i);
-			que2.offer(i);
-			que1.offer(map);
-			num++;
-		}
+		for (int i : priorities)
+			queue.offer(i);
 
-		num = 1;
-
-		for (int j = 0; j < priorities.length; j++) {
-			int result = que2.poll();
-			count = 0;
-			for (int k = 0; k < priorities.length - 1; k++) {
-				int temp = que2.poll();
-				if (result < temp) {
-					count++;
-					que2.offer(temp);
-				} else {
-					que2.offer(temp);
+		while (!queue.isEmpty()) {
+			int result = queue.poll();
+			boolean check = false;
+			for (int i : queue) {
+				if (result < i) {
+					check = true;
+					break;
 				}
 			}
-			if (count == 0) {
-				break;
+			if (check)
+				queue.offer(result);
+			else {
+				count++;
+				if(location == 0) return count;
 			}
-			map = new HashMap<>();
-			map.put(num, result);
-			que1.poll();
-			que1.offer(map);
-			num++;
-			que2.offer(result);
+			
+			location--;
+			if(location < 0) location += priorities.length;
+
 		}
+		return count;
 
-		int result = 0;
-
-		for (int a = 0; a < priorities.length; a++) {
-			Set<Integer> set = que1.remove().keySet();
-			Iterator<Integer> num1 = set.iterator();
-			result++;
-			if (num1.next() == location + 1) {
-				answer = result;
-				break;
-			}
-		}
-
-		return answer;
 	}
 
 	public static void main(String[] args) {
@@ -68,7 +40,7 @@ public class Stack_Queue_2 {
 		int[] priorities2 = { 1, 1, 9, 1, 1, 1 };
 		int location2 = 0;
 
-		System.out.println(solution(priorities, location));
+		 System.out.println(solution(priorities, location));
 		System.out.println(solution(priorities2, location2));
 	}
 }

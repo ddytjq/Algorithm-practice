@@ -26,5 +26,3 @@ public class Stack_Queue_1 {
 		System.out.println(solution(result));
 	}
 }
-
-// Test Case 추가
