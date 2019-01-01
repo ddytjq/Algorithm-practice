@@ -5,11 +5,12 @@ public class Stack_Queue_3 {
 	public static int solution(int bridge_length, int weight, int[] truck_weights) {
 		int answer = 0;
 		int temp;
-		Queue<Integer> que = new LinkedList();
-		Queue<Integer> result = new LinkedList();
+		Queue<Integer> que = new LinkedList<Integer>();
+		Queue<Integer> result = new LinkedList<Integer>();
 
 		for (int i : truck_weights)
 			que.offer(i);
+
 		result.offer(que.poll());
 		answer++;
 
@@ -24,20 +25,13 @@ public class Stack_Queue_3 {
 				else {
 					if (!que.isEmpty()) {
 						result.offer(que.poll());
+
 					} else {
 						if (result.size() == 1) {
-							if (truck_weights.length > 1) {
-								answer += bridge_length - result.size();
-								break;
-							} else {
-								answer += bridge_length - result.size() + 1;
-								break;
-							}
+							answer += bridge_length - result.size();
+							break;
 						} else {
 							result.poll();
-							answer--;
-							if (result.size() == 1)
-								answer++;
 						}
 					}
 				}
