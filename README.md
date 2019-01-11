@@ -1,5 +1,5 @@
 ## Algorithm-practice
 
-#### This project is my algorithm practice project.
+#### References
 * https://www.codeground.org
 * https://programmers.co.kr
