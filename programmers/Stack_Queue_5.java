@@ -9,7 +9,6 @@ public class Stack_Queue_5 {
 					answer[i]=j+1;
 					break;
 				}
-				
 			}
 		}
 		return answer;
