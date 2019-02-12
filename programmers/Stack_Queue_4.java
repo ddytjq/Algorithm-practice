@@ -1,42 +1,43 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Vector;
 
 public class Stack_Queue_4 {
 	public static int[] solution(int[] progresses, int[] speeds) {
-		Queue<Integer> queue = new ConcurrentLinkedQueue<>();
-		for (int i = 0; i < progresses.length; i++) {
-			queue.add((100 - progresses[i]) % speeds[i] == 0 ? (100 - progresses[i]) / speeds[i]
-					: (100 - progresses[i]) / speeds[i] + 1);
+		int[] answer= {};
+		Vector<Integer> vec = new Vector<Integer>();
+		Queue queue = new LinkedList();
+			
+		for(int i = 0; i < progresses.length; i++) {
+			queue.add((100-progresses[i])/speeds[i]);
 		}
-		List<Integer> result = new ArrayList<>();
-		int standard = queue.poll();
-		int cnt = 1;
-		while (!queue.isEmpty()) {
-			int num = queue.poll();
-			if (standard >= num) {
-				cnt++;
-			} else {
-				result.add(cnt);
-				cnt = 1;
-				standard = num;
+		
+		int max = (int)queue.poll();
+		int count = 1;
+		while(!queue.isEmpty()) {
+			if(max >= (int)queue.peek()) {
+				queue.poll();
+				count++;
+			}
+			else {
+				max = (int)queue.poll();
+				vec.add(count);
+				count = 1;
 			}
 		}
-		result.add(cnt);
-		int[] answer = new int[result.size()];
-		for (int i = 0; i < answer.length; i++) {
-			answer[i] = result.get(i);
-		}
+		vec.add(count);
+		answer = new int[vec.size()];
+		for(int k = 0; k < vec.size(); k++)
+			answer[k] = vec.get(k);
 		return answer;
 	}
 
 	public static void main(String[] args) {
     	int []progresses = {93, 30, 55};
     	int []speeds = {1, 30, 5};
-    	
+    	solution(progresses, speeds);
 		for (int i = 0; i < solution(progresses, speeds).length; i++) {
-			System.out.print(solution(progresses, speeds)[i]);
+			System.out.print(solution(progresses, speeds)[i]+" ");
 		}
     }
 }
