@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -5,6 +6,8 @@ public class Heap_1 {
     public static int solution(int[] scoville, int K) {
         int answer = 0;
         Queue queue = new LinkedList();
+
+        Arrays.sort(scoville);
 
         for (int sco : scoville) {
             if (sco < K)
@@ -28,7 +31,7 @@ public class Heap_1 {
     }
 
     public static void main(String[] args) {
-        int[] scoville = {1, 2, 3, 9, 10, 12};
+        int[] scoville = {1,2,3,9,10,12};
         int K = 7;
 
         System.out.println(solution(scoville, K));
