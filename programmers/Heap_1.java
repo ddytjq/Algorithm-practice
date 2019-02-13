@@ -1,11 +1,11 @@
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Heap_1 {
     public static int solution(int[] scoville, int K) {
         int answer = 0;
-        Queue queue = new LinkedList();
+        Queue queue = new PriorityQueue<Integer>();
 
         Arrays.sort(scoville);
 
@@ -23,8 +23,9 @@ public class Heap_1 {
                 answer++;
             }
             else {
-                if((int)queue.poll() < K)
+                if((int)queue.poll() < K) {
                     answer = -1;
+                }
             }
         }
         return answer;
@@ -36,5 +37,6 @@ public class Heap_1 {
 
         System.out.println(solution(scoville, K));
     }
-
 }
+
+// 81점
