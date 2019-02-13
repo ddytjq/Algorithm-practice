@@ -4,7 +4,7 @@ import java.util.Queue;
 public class Heap_1 {
     public static int solution(int[] scoville, int K) {
         int answer = 0;
-        Queue queue = new LinkedList<>();
+        Queue queue = new LinkedList();
 
         for (int sco : scoville) {
             if (sco < K)
@@ -20,8 +20,8 @@ public class Heap_1 {
                 answer++;
             }
             else {
-                queue.poll();
-                answer = -1;
+                if((int)queue.poll() < K)
+                    answer = -1;
             }
         }
         return answer;
